@@ -8,7 +8,7 @@ ICTConf'17'nin web uygulaması.
 *	[Hasan Emre Özer](https://github.com/hasanemrebeyy)
 *	[Hikmet Semiz](https://github.com/HikmoS)
 *	[Emir Özbir](https://github.com/WoodProgrammer)
-	
+*	[Harun Baş](https://github.com/badgeekluck)
    
 ## Ek Modüllerimiz
 
