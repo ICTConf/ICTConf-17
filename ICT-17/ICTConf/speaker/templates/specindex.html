@@ -1,0 +1,335 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ICTConf 17' | Bilişimin Kalbi</title>
+   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i%7CPoppins:300,400,500,600,700" rel="stylesheet">
+
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/flaticon/flaticon.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/swiper.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/lightcase.css' %}" rel="stylesheet">
+    <link href="{%  static 'assets/css/quick-view.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/jquery.nstSlider.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/flexslider.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/banner-bg.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{%  static 'assets/css/responsive.css' %}" rel="stylesheet">
+</head>
+  <body>
+    <div class="box-layout">
+      <header class="header-six">
+        <nav class="main-menu menu-six menu-fixed">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/"><img src="{%  static 'images/logo.png' %}" alt="logo" id="logo" class="img-responsive"></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="header-cart-ticket-option pull-right">
+
+                <li><a href="{% url 'home:get_ticket' %}" class="menu-button">Bilet Al</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown active">
+                  <a href="/" >Anasayfa</a>
+                </li>
+                <li class="dropdown">
+                  <a href="{% url 'home:about' %}">Hakkında</a>
+                </li>
+                <li class="dropdown">
+                  <a href="/speaker">Konuşmacılar</a>
+                </li>
+                <li>
+                  <a href="{% url 'home:schedule' %}">Etkinlik Takvimi</a>
+                </li>
+                <li class="dropdown">
+                  <a href="{% url 'home:contact' %}">İletişim</a>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container -->
+        </nav>
+      </header>
+
+      <!-- banner start here-->
+            <section class="banner banner-seven">
+              <div class="banner-overlay">
+                <div class="container">
+                  <div class="banner-seven-content">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="seven-content-left">
+                          <div class="content">
+                            <span>Meet</span>
+                            <span>UP</span>
+                            <h2>ICT CONFERENCE 2017</h2>
+
+				    {% if current_count >= 101%}
+                               <h3 style="color:#ec971f;">Katılımcı sayımız : {{ ticket_count }}</h3>
+                        {% endif%}
+                          </div>
+                        </div><!-- content-left -->
+                      </div>
+                      <div class="col-md-6 col-sm-12 hidden-xs">
+                        <div class="seven-content-right-bg">
+                          <div class="seven-content-right">
+                            <div class="content">
+                              <span class="counter" data-count="12">0</span>
+                              <p>Aralık 2017</p>
+                              <ul id="countdown" class="countdown">
+                                <li class="clock-item"><span class="count-number days">00</span><p class="days_text count-text">Gün</p></li>
+
+                                <li class="clock-item"><span class="count-number hours">00</span><p class="hours_text count-text">Saat</p></li>
+
+                                <li class="clock-item"><span class="count-number minutes">00</span><p class="minutes_text count-text">Dakika</p></li>
+
+                                <li class="clock-item"><span class="count-number seconds">00</span><p class="seconds_text count-text">Saniye</p></li>
+                              </ul>
+                            </div>
+                          </div><!-- content-right -->
+                        </div><!-- content-right bg -->
+                      </div>
+                    </div><!-- row -->
+
+
+
+                  </div><!-- banner-content -->
+                </div><!-- container-->
+              </div><!-- overlay -->
+            </section>
+            <!-- banner end here -->
+
+              <!-- page-header start here -->
+              <section class="page-header">
+                  <div class="container">
+                      <div class="content">
+                          <h4>ICT Conf 17' Konuşmacıları</h4>
+                          <ul>
+                              <li><span><i class="fa fa-home" aria-hidden="true"></i></span> <a href="/">Anasayfa</a> <span>|</span></li>
+                              <li>Konuşmacılar</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <!-- container -->
+              </section>
+              <!-- page header -->
+              <!-- page-header end here -->
+
+
+              <!-- Speakers start here -->
+              <section class="speakers speakers-two padding-120">
+                  <div class="container">
+                      <div class="section-header text-center">
+                        <h3>Konuşmacılar</h3>
+                        <p><em>Alanlarında uzman konuşmacılar Namık Kemal Üniversitesi'nde.</em></p>
+                      </div>
+                      <div class="speaker-items">
+                          <div class="row">
+                              {% for s in speakers %}
+                              <div class="col-md-3 col-sm-6 col-xs-12">
+                                  <div class="speaker-item">
+                                      <div class="speaker-image">
+                                          <img src="{{ s.photo.url }}" alt="speaker image" class="img-responsive">
+                                      </div>
+                                      <!-- speaker-image -->
+                                      <div class="speaker-content">
+                                          <span class="icon"><i class="fa fa-microphone" aria-hidden="true"></i></span>
+                                          <div class="details">
+                                              <h5><a href="/" style="color:white">{{ s.name }} {{ s.last_name }}</a></h5>
+
+                                              <span>{{ s.mission }}</span>
+                                          </div>
+                                      </div>
+                                      <!-- speaker-content -->
+                                  </div>
+                                  <!-- speaker-item -->
+                              </div>
+                              {% endfor %}
+                          </div>
+                          <!-- row -->
+                      </div>
+                      <!-- speaker-items -->
+                  </div>
+                  <!-- container -->
+              </section>
+              <!-- Speakers end here -->
+
+
+
+
+                      <!-- Map start here -->
+                      <section id="map" class="home-map">
+                        <div id="home-map" class="map"></div>
+                      </section>
+                      <!-- Map end here -->
+
+
+
+                      <!-- Newsletter Start here -->
+                      <section class="newsletter newsletter-six">
+                        <div class="container">
+                          <p>Haber Bülteni</p>
+                          <form action="/">
+                            <input type="email" name="email" placeholder="Mail adresinizi giriniz">
+                            <input type="submit" name="submit" value="Kayıt ol">
+                          </form>
+                        </div><!-- container -->
+                      </section>
+                      <!-- Newsletter End here -->
+
+
+
+                      <!-- Footer Start here -->
+                      <footer class="footer-six">
+                        <div class="overlay home-six-overlay">
+                          <div class="container">
+                            <h2>ICTConf 17'</h2>
+                            <ul class="event-social">
+                              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            </ul>
+                            <p>Copyright &copy; 2017. Altyapı <a href="#">EventProject</a></p>
+                          </div>
+                        </div>
+                      </footer>
+                      <!-- Footer End here -->
+                    </div>
+
+
+
+
+    <!-- jQuery -->
+    <script src="{% static 'assets/js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-migrate-1.4.1.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
+    <!-- Coundown -->
+    <script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+
+    <!--Swiper-->
+    <script src="{% static 'assets/js/swiper.jquery.min.js' %}"></script>
+
+    <!--Masonry-->
+    <script src="{% static 'assets/js/masonry.pkgd.min.js' %}"></script>
+
+    <!--Lightcase-->
+    <script src="{% static 'assets/js/lightcase.js' %}"></script>
+
+    <!--modernizr-->
+    <script src="{% static 'assets/js/modernizr.js' %}"></script>
+
+    <!--velocity-->
+    <script src="{%  static 'assets/js/velocity.min.js' %}"></script>
+
+    <!--quick-view-->
+    <script src="{% static 'assets/js/quick-view.js' %}"></script>
+
+    <!--nstSlider-->
+    <script src="{% static 'assets/js/jquery.nstSlider.js' %}"></script>
+    <script src="{% static 'assets/js/nstfunctions.js' %}"></script>
+
+    <!--flexslider-->
+    <script src="{% static 'assets/js/flexslider-min.js' %}"></script>
+    <script src="{% static 'assets/js/flexfunctions.js' %}"></script>
+
+    <!--directional-->
+    <script src="{% static 'assets/js/directional-hover.js' %}"></script>
+
+    <!--easing-->
+    <script src="{% static 'assets/js/jquery.easing.min.js' %}"></script>
+
+    <!-- Google Map -->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAQlXnmyNPAeN3c3HNyWoUMqDk6bDF31Cg"></script>
+
+    <!-- Custom -->
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+
+    <script type="text/javascript">
+
+      //Home Page map
+        var styleArray = [
+          {
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [
+              {
+                "color": "#65ac4c"
+              }
+            ]
+          }
+        ];
+
+        var mapOptions = {
+          center: new google.maps.LatLng(41.181990, 27.818176),
+          zoom: 16,
+          styles: styleArray,
+          scrollwheel: false,
+          backgroundColor: 'transparent',
+            mapTypeControl: false,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("home-map"),
+          mapOptions);
+        var myLatlng = new google.maps.LatLng(41.181990, 27.818176);
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          icon: 'images/map-icon.png'
+        });
+
+
+
+        //Travel map
+        var styleArray = [
+          {
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [
+              {
+                "color": "#65ac4c"
+              }
+            ]
+          }
+        ];
+
+        var mapOptions = {
+          center: new google.maps.LatLng(41.181990, 27.818176),
+          zoom: 16,
+          styles: styleArray,
+          scrollwheel: false,
+          backgroundColor: 'transparent',
+            mapTypeControl: false,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+          mapOptions);
+        var myLatlng = new google.maps.LatLng(41.181990, 27.818176);
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          icon: 'images/map-icon.png'
+        });
+
+    </script>
+
+
+
+  </body>
+</html>

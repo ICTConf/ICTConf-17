@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ICTConf 17' | Bilişimin Kalbi</title>
+   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i%7CPoppins:300,400,500,600,700" rel="stylesheet">
+
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/flaticon/flaticon.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/swiper.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/lightcase.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/quick-view.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/jquery.nstSlider.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/flexslider.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/banner-bg.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet">
+
+</head>
+  <body>
+
+    {% if mail_status == True %}
+        <script>alert("Daha önce bu mail adresi ile kayıt olmuşsunuz . Teşekkür ederiz ")</script>
+    {% endif %}
+
+    {% if mail_record_status == True %}
+	        <script>alert("Kaydınız tamamlanmıştır . Teşekkür ederiz.") </script>
+    {% endif%}
+
+
+    <div class="box-layout">
+      <header class="header-six">
+        <nav class="main-menu menu-six menu-fixed">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/"><img id="logo" src="{% static "images/logo.png" %}"  alt="logo" class="img-responsive"></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="header-cart-ticket-option pull-right">
+
+                <li><a href="{% url 'home:get_ticket' %}"class="menu-button">KATIL</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown active">
+                  <a href="/" >Anasayfa</a>
+                </li>
+                <li class="dropdown">
+                  <a href="{% url 'home:about' %}">Hakkında</a>
+                </li>
+                <li class="dropdown">
+                  <a href="/speaker">Konuşmacılar</a>
+                </li>
+                <li>
+                  <a href="{% url 'home:schedule' %}">Etkinlik Takvimi</a>
+                </li>
+                <li class="dropdown">
+                  <a href="{% url 'home:contact' %}">İletişim</a>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container -->
+        </nav>
+      </header>
+
+
+      <!-- banner start here-->
+      <section class="banner banner-seven">
+        <div class="banner-overlay">
+          <div class="container">
+            <div class="banner-seven-content">
+              <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                  <div class="seven-content-left">
+                    <div class="content">
+                      <span>Meet</span>
+                      <span>UP</span>
+
+                      <h2>ICT CONFERENCE 2017</h2>
+			{% if current_count >= 101%}
+	                       <h3 style="color:#ec971f;">Katılımcı sayımız : {{ current_count }}</h3>
+			{% endif%}
+                    </div>
+
+                  </div><!-- content-left -->
+                </div>
+                <div class="col-md-6 col-sm-12 hidden-xs">
+                  <div class="seven-content-right-bg">
+                    <div class="seven-content-right">
+                      <div class="content">
+
+
+                        <span class="counter" data-count="12">0</span>
+                        <p>Aralık 2017</p>
+
+
+                        <ul id="countdown" class="countdown">
+                          <li class="clock-item"><span class="count-number days">00</span><p class="days_text count-text">Gün</p></li>
+
+                          <li class="clock-item"><span class="count-number hours">00</span><p class="hours_text count-text">Saat</p></li>
+
+                          <li class="clock-item"><span class="count-number minutes">00</span><p class="minutes_text count-text">Dakika</p></li>
+
+                          <li class="clock-item"><span class="count-number seconds">00</span><p class="seconds_text count-text">Saniye</p></li>
+                        </ul>
+                      </div>
+                    </div><!-- content-right -->
+                  </div><!-- content-right bg -->
+                </div>
+              </div><!-- row -->
+
+
+            </div><!-- banner-content -->
+          </div><!-- container-->
+        </div><!-- overlay -->
+      </section>
+      <!-- banner end here -->
+
+
+      <!-- About start here -->
+      <section id="about" class="about about-six padding-120">
+        <div class="container">
+          <div class="section-header text-center">
+            <h2>ICT Conf 17' Hakkında</h2>
+          </div>
+          <p>Namık Kemal Üniversitesi Bilişim Topluluğu'nun 12 aralık tarihinde düzenleyeceği " Siber Güvenlik, Sistem ,Nesnelerin İnterneti ve Yazılım Dünyasındaki Gelişmelerin " konu alınacağı her biri alanında yetkin konuşmacıların katılacağı bir eğitim ve konferans olması planlanmaktadır.
+            ICTConf'un temel amacı Trakya bölgesindeki nitelikli bilişim etkinliği bulunmaması nedeniyle Türkiye'nin dört bir yanından kendi alanında uzman konuşmacıları getirerek, kurum kuruluş ve öğrencilerin bilgilenmesi sağlamaktır.</p>
+          <ul class="about-button">
+            <li><a href="/get_ticket" class="default-button">Bilet Al</a></li>
+          </ul>
+
+        </div><!-- container -->
+      </section>
+      <!-- About end here -->
+
+
+      <!-- Speakers start here -->
+      <section class="speakers speakers-six">
+        <div class="overlay home-six-overlay">
+          <div class="container">
+            <div class="section-header text-center">
+              <h3>Konuşmacılar</h3>
+              <p><em>Alanlarında uzman konuşmacılar Namık Kemal Üniversitesi'nde.</em></p>
+            </div>
+              {% for speaker in speaker_data %}
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="speaker-item">
+                    <div class="speaker-image dh-container">
+                      <img src="{{ speaker.photo.url  }}" rel="stylesheet">
+
+                      <div class="speaker-content-bg dh-overlay">
+                        <div class="speaker-content">
+                          <div class="content">
+                            <h4><a href="#">{{ speaker.name }} {{ speaker.last_name }}</a></h4>
+                            <span>{{ speaker.mission }}</span><br>
+	                    <span><b>{{ speaker.company }}</b></span>   
+      			   <ul class="speaker-social">
+                              <li><a href="https://twitter.com/{{speaker.twitter}}" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                              <li><a href="https://github.com/{{speaker.github}}" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                              <li><a href="https://linkedin.com/in/{{speaker.linkedin}}" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                            </ul>
+                          </div>
+                        </div><!-- speaker-content -->
+                      </div><!-- speaker-content-bg -->
+                    </div><!-- speaker-image -->
+                  </div><!-- speaker-item -->
+                </div>
+              {% endfor %}
+              </div><!-- row -->
+
+            </div><!-- speaker-items -->
+          </div><!-- container -->
+        </div><!-- overlay -->
+      </section>
+      <!-- Speakers end here -->
+
+
+
+      <!-- Schedules start here -->
+      <section id="schedules " class="schedules schedules-six padding-120">
+        <div class="container">
+          <div class="section-header text-center">
+            <h3>Etkinlik Takvimi</h3>
+            <p><em>12 Aralık 2017 günkü etkinliğimizin etkinlik takvimi.</em></p>
+          </div>
+
+          <div class="schedule-tabs">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#day-one" aria-controls="day-one" role="tab" data-toggle="tab">
+                Day-01
+                <span>12 december 2017</span>
+              </a></li>
+
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="day-one">
+                <div class="schedule-table table-responsive">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th class="time">Saat</th>
+                        <th class="session">Oturum</th>
+                        <th class="spekers">Konuşmacı</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for event in event_data %}
+                            <tr>
+                                <td class="time"><span><i class="fa fa-clock-o" aria-hidden="true"></i></span>{{ event.start_date }} </td>
+                                <td class="session"><span><i class="fa fa-list-alt" aria-hidden="true"></i></span>{{ event.title }}</td>
+                                <td class="spekers"><span><i class="fa fa-microphone" aria-hidden="true"></i></span>{{ event.speaker }}</td>
+                            </tr>
+                        {% endfor %}
+
+
+                    </tbody>
+                  </table>
+                </div><!-- schedule-table -->
+                <a href="#" class="schedule-button default-button">Takvimi İndir <span><i class="fa fa-download" aria-hidden="true"></i></span></a>
+              </div>
+            </div>
+          </div>
+        </div><!-- container -->
+      </section><!-- schedules -->
+      <!-- Schedules end here -->
+
+
+      <!-- Sponsor start here -->
+      <section id="sponsor" class="sponsor sponsor-six">
+        <div class="overlay home-six-overlay">
+          <div class="container">
+            <div class="section-header text-center">
+              <h3>Sponsorlarımız</h3>
+              <p><em>ICT Conf 17' düzenlemekte maddi ve manevi katkısı olanlar</em></p>
+            </div>
+
+            <div class="sponsor-item">
+              <h5>Ana Sponsor</h5>
+              <div class="swiper-container sponsor-slider-one">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+
+
+                    {% for i in platin %}
+                        <div class="swiper-slide">
+                          <a href="{{ i.sponsorship_link}}" target="_blank"> <img  width="500px" src="{{ i.photo.url  }}" rel="stylesheet"></a>
+
+                  </div>
+                         {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div><!-- sponsor-item -->
+
+
+
+
+                <div class="sponsor-item">
+                        <h5>Altın Sponsor</h5>
+                  <div class="swiper-container sponsor-slider-two">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img src="{% static 'images/sponsors/sponsorict.png' %}" rel="stylesheet">
+                      </div>
+                       {% for i in golden %}
+                        <div class="swiper-slide">
+                           <a href="{{ i.sponsorship_link}}" target="_blank"> <img src="{{ i.photo.url  }}" rel="stylesheet"></a>
+                            
+                        </div>
+                           {% endfor %}
+           
+                      <div class="swiper-slide">
+                        <img src="{% static 'images/sponsors/sponsorict.png' %}" rel="stylesheet">
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- sponsor-item -->
+
+
+
+
+            <div class="sponsor-item">
+              <h5>Gümüş Sponsor</h5>
+              <div class="swiper-container sponsor-slider-three">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                        <img src="{% static 'images/sponsors/sponsorict.png' %}" rel="stylesheet">
+                  </div>
+                         {% for i in silver %}
+                        <div class="swiper-slide">
+                          <a href="{{ i.sponsorship_link}}" target="_blank"> <img src="{{ i.photo.url  }}" rel="stylesheet"></a>
+                        </div>
+                           {% endfor %}
+                <div class="swiper-slide">
+                        <img src="{% static 'images/sponsors/sponsorict.png' %}" rel="stylesheet">
+                  </div>
+                  </div>
+
+                </div>
+
+                </div>
+            </div><!-- sponsor-item -->
+
+	  
+            <div class="sponsor-item">
+              <h5>Destekciler</h5>
+              <div class="swiper-container sponsor-slider-four">
+                <div class="swiper-wrapper">
+                    {% for i in support %}
+                  <div class="swiper-slide" >
+
+                    <a href="{{ i.sponsorship_link}}" target="_blank"> <img src="{{ i.photo.url  }}" style="width: 200px; margin-right: 15px;" rel="stylesheet"></a>
+                  </div>
+                        {% endfor %}
+                </div>
+              </div>
+            </div><!-- sponsor-item -->
+
+
+	 <div class="sponsor-item">
+              <h5>Medya Sponsorları</h5>
+              <div class="swiper-container sponsor-slider-four">
+                <div class="swiper-wrapper">
+                   {% for i in media %}
+                  <div class="swiper-slide" >
+                    <a href="{{ i.sponsorship_link}}" target="_blank"> <img src="{{ i.photo.url  }}" style="width: 200px; margin-right: 15px;" rel="stylesheet"></a>
+                  </div>
+                        {% endfor %}
+</div>
+              </div>
+            </div><!-- sponsor-item -->
+
+
+            <a href="#" class="sponsor-button default-button">Sponsor olmak istiyorum!</a>
+          </div><!-- container -->
+        
+        </div><!-- overlay -->
+
+      </section><!-- sponsor -->
+      <!-- Sponsor end here -->
+
+
+      <!-- Travel start here -->
+      <section class="travel travel-six padding-120">
+        <div class="container">
+          <div class="section-header text-center">
+            <h3>Ulaşım Bilgileri</h3>
+            <p><em>Üniversitemiz şehir merkezi dışında olduğu için talimatlara uymanız gerekmektedir.</em></p>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="travel-information">
+                <div class="info-item first">
+                  <div class="icon fa fa-globe"></div>
+                  <div class="details">
+                    <h4>Etkinlik Alanı</h4>
+                    <p>Etkinliğimiz Namık Kemal Üniversitesi Çorlu Mühendislik Fakültesi'nde gerçekleşecektir. Çorlu mühendislik fakültesi avantajın çıkışında ve istanbul yolu üzerinde bulunmaktadır. </p>
+                  </div>
+                </div><!-- info-item -->
+                <div class="info-item second">
+                  <div class="icon fa fa-bus"></div>
+                  <div class="details">
+                    <h4>Ulaşım</h4>
+                    <p>Şehir içinden belediye otobüsleri kullanarak gelmek isteyen katılımcılarımız 6 numaralı otobüsü kullanarak etkinlik alanına ulaşabilirler.</p>
+                  </div>
+                </div><!-- info-item -->
+                <div class="info-item third">
+                  <div class="icon fa fa-cutlery"></div>
+                  <div class="details">
+                    <h4>Otel & Restaurant</h4>
+                    <p>Çorlu da konaklamak isteyen katılımcılarımızın organizasyon ekibi ile iletişime geçmeleri gerekmektedir.</p>
+                  </div>
+                </div><!-- info-item -->
+              </div><!-- travel-information -->
+            </div>
+            <div class="col-md-6">
+              <div id="map_canvas" class="travel-map"></div><!-- travel-map -->
+            </div>
+          </div>
+        </div><!-- container -->
+      </section><!-- travel -->
+      <!-- Travel end here -->
+
+
+
+
+
+
+
+      <!-- Gallery start here -->
+      <section class="gallery gallery-six">
+        <div class="overlay home-six-overlay">
+          <div class="section-header text-center">
+            <h3>Etkinlik Fotoğrafları</h3>
+            <p><em>Her yıl düzenlenen ICT Conf etkinliğinin bir önceki yıla ait fotoğrafları.</em></p>
+          </div>
+         
+          <div class="gallery-items">
+        {% for gallery in gallery_data %}
+ 
+	   <div class="gallery-item">
+              <div class="gallery-image">
+                <img src="{{gallery.photo.url}}" alt="gallery image" class="img-responsive">
+                 <div class="overlay"></div>       
+                  <a href="{{gallery.photo.url}}" data-rel="lightcase:myCollection">
+                    <img src="{{gallery.photo.url}}" alt="gallery icon" class="img-responsive">
+                  </a>
+              </div>
+            </div><!-- gallery-item -->
+{% endfor %}
+
+          </div><!-- gallery-items -->
+        </div><!-- overlay -->
+      </section><!-- gallery -->
+      <!-- Gallery end here -->
+
+
+
+      <!-- Map start here -->
+      <section id="map" class="home-map">
+        <div id="home-map" class="map"></div>
+      </section>
+      <!-- Map end here -->
+
+
+
+      <!-- Newsletter Start here -->
+      <section class="newsletter newsletter-six">
+        <div class="container">
+          <p>Haber Bülteni</p>
+          <form action="tickets/bulten" method="GET">
+            <input type="email" name="mail_adresi" placeholder="Mail adresinizi giriniz">
+            <input type="submit" name="submit" value="Kayıt ol">
+          </form>
+        </div><!-- container -->
+      </section>
+      <!-- Newsletter End here -->
+
+
+
+      <!-- Footer Start here -->
+      <footer class="footer-six">
+        <div class="overlay home-six-overlay">
+          <div class="container">
+            <h2>ICTConf 17'</h2>
+            <ul class="event-social">
+              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+              <li><a href="https://twitter.com/ictconf17"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+              <li><a href="https://instagram.com/ictconf17"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+            </ul>
+            <p>Copyright &copy; 2017. Altyapı <a href="#">EventProject</a></p>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer End here -->
+    </div>
+
+
+
+
+        <!-- jQuery -->
+    <script src="{% static 'assets/js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-migrate-1.4.1.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
+    <!-- Coundown -->
+    <script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+
+    <!--Swiper-->
+    <script src="{% static 'assets/js/swiper.jquery.min.js' %}"></script>
+
+    <!--Masonry-->
+    <script src="{% static 'assets/js/masonry.pkgd.min.js' %}"></script>
+
+    <!--Lightcase-->
+    <script src="{% static 'assets/js/lightcase.js' %}"></script>
+
+    <!--modernizr-->
+    <script src="{% static 'assets/js/modernizr.js' %}"></script>
+
+    <!--velocity-->
+    <script src="{%  static 'assets/js/velocity.min.js' %}"></script>
+
+    <!--quick-view-->
+    <script src="{% static 'assets/js/quick-view.js' %}"></script>
+
+    <!--nstSlider-->
+    <script src="{% static 'assets/js/jquery.nstSlider.js' %}"></script>
+    <script src="{% static 'assets/js/nstfunctions.js' %}"></script>
+
+    <!--flexslider-->
+    <script src="{% static 'assets/js/flexslider-min.js' %}"></script>
+    <script src="{% static 'assets/js/flexfunctions.js' %}"></script>
+
+    <!--directional-->
+    <script src="{% static 'assets/js/directional-hover.js' %}"></script>
+
+    <!--easing-->
+    <script src="{% static 'assets/js/jquery.easing.min.js' %}"></script>
+
+    <!-- Google Map -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQlXnmyNPAeN3c3HNyWoUMqDk6bDF31Cg"></script>
+
+    <!-- Custom -->
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+
+    <script type="text/javascript">
+
+      //Home Page map
+        var styleArray = [
+          {
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [
+              {
+                "color": "#65ac4c"
+              }
+            ]
+          }
+        ];
+
+        var mapOptions = {
+          center: new google.maps.LatLng(41.181990, 27.818176),
+          zoom: 16,
+          styles: styleArray,
+          scrollwheel: false,
+          backgroundColor: 'transparent',
+            mapTypeControl: false,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("home-map"),
+          mapOptions);
+        var myLatlng = new google.maps.LatLng(41.181990, 27.818176);
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          icon: 'images/map-icon.png'
+        });
+
+
+
+        //Travel map
+        var styleArray = [
+          {
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [
+              {
+                "color": "#65ac4c"
+              }
+            ]
+          }
+        ];
+
+        var mapOptions = {
+          center: new google.maps.LatLng(41.181990, 27.818176),
+          zoom: 16,
+          styles: styleArray,
+          scrollwheel: false,
+          backgroundColor: 'transparent',
+            mapTypeControl: false,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+          mapOptions);
+        var myLatlng = new google.maps.LatLng(41.181990, 27.818176);
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          icon: 'images/map-icon.png'
+        });
+
+    </script>
+
+
+
+  </body>
+</html>
